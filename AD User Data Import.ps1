@@ -11,6 +11,10 @@
 #Set the path for the .xlsx we will import
 $path = "C:\Admin\userlist.xlsx"
 
+#Generate a Log File - This part is a work in progress
+	#$log = "C:\Admin\WSUS\Approved_Updates_{0:MMddyyyy_HHmm}.log" -f (Get-Date)
+	#new-item -path $log -type file -force
+
 #import the proper module, this does require that psexcel be installed
 import-module psexcel
 Import-Module ActiveDirectory
@@ -96,16 +100,12 @@ if ($user.POBox -ne $null)
 if ($user.HomePhone -ne $null)
 {Set-ADUser $user.Username -HomePhone $user.HomePhone}
 
+#Country
+if ($user.Country -ne $null)
+{Set-ADUser $user.Username -Country $user.Country}
+
+#Description, comment this out, but its a useful way to know when the import was successfully completed.
+$descriptionstring = "Imported with Powershell:" + (Get-Date)
+Set-ADUser $user.Username -Description $descriptionstring
+
 }
-
-<######################################
-  _      ____   _____ 
- | |    / __ \ / ____|
- | |   | |  | | |  __ 
- | |   | |  | | | |_ |
- | |___| |__| | |__| |
- |______\____/ \_____|
-                                               
-######################################>
-
-#To be added later
