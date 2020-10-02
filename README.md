@@ -1,9 +1,10 @@
 # AD-User-Data-Import
 Import Data to User Accounts from an Excel Spreadsheet
 
+This script is a response to a challenge I posed myself.
 
+Scenario: HR brings a spreadsheet of data from their system that they want imported into Active Directory. Use powershell to import this data.
 
-The idea with this script is that we have an excel spreadsheet of data we need imported into active directory. Each column in our spreadsheet is represented by $user.COLUMN where COLUMN
-is the name of the column. We must use usernames and not the first/last names of the users in order for AD to verify it, so adding an auto-calculating cell that pulls the usernames
-may be worth it. Also I plan on adding cell verification so that if there is an empty cell in the spreadsheet it doesn't overwrite the data in AD. Also note, this will not create
-the users if they aren't in there already, I will be working that in another script.
+Solution: This script imports a spreadsheet called userlist.xlsx from C:\Admin and uses the data in the form to fill out the Active Directory user accounts. Additionally, I added a check to verify there is data in the cell before importing it so that there is no overwriting data with blank cells.
+
+I will periodically add more data to this spreadsheet, as I have found it useful for building sample data for manipulating accounts in AD. I will add a script that will build these accounts as well at some point.
