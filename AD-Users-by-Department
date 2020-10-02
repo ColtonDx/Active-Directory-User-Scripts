@@ -1,3 +1,7 @@
+<# This script looks for all users who have their department listed the same as the variable $department and adds them to an AD Group that matches the name of the variable $group.
+   The group and departments must be set prior to running the script, and must exist in AD.
+   #>
+   
 <######################################
    _____ ______ _______ _    _ _____  
   / ____|  ____|__   __| |  | |  __ \ 
