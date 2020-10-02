@@ -1,3 +1,5 @@
+<# This script will import data from C:\Admin\userlist.xlsx and import it into Active Directory User Accounts that already exist#>
+
 <######################################
    _____ ______ _______ _    _ _____  
   / ____|  ____|__   __| |  | |  __ \ 
