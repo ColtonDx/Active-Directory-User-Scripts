@@ -11,21 +11,11 @@ $path = "C:\Admin\userlist.xlsx"
 import-module psexcel
 Import-Module ActiveDirectory
 
-#Pull Computer Name from Current PC
-	$Computer = $env:COMPUTERNAME
-
-#Pull Domain Name from Current PC
-	$Domain = $env:USERDNSDOMAIN
-
-#Generate Fully Qualified Domain Name of Current PC
-	$FQDN = "$Computer" + "." + "$Domain"
-
 #Generate Array
 $users = new-object System.Collections.ArrayList
 
-
 ###
-# Loop Template
+# Loop
 ###
 foreach ($user in (Import-XLSX -Path $path -RowStart 1))
 {
