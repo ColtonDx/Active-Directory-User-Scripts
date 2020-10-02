@@ -1,0 +1,37 @@
+<######################################
+   _____ ______ _______ _    _ _____  
+  / ____|  ____|__   __| |  | |  __ \ 
+ | (___ | |__     | |  | |  | | |__) |
+  \___ \|  __|    | |  | |  | |  ___/ 
+  ____) | |____   | |  | |__| | |     
+ |_____/|______|  |_|   \____/|_|   
+######################################>
+
+#Import Active Directory Module
+Import-Module ActiveDirectory
+
+#Generate a Log File - This part is a work in progress
+	#$log = "C:\Admin\WSUS\Approved_Updates_{0:MMddyyyy_HHmm}.log" -f (Get-Date)
+	#new-item -path $log -type file -force
+
+#Set the Department we want to identify all users for
+$department = ""
+
+#Group/Groups we want to add to them all to
+$group = ""
+
+<######################################
+  _      ____   ____  _____  
+ | |    / __ \ / __ \|  __ \ 
+ | |   | |  | | |  | | |__) |
+ | |   | |  | | |  | |  ___/ 
+ | |___| |__| | |__| | |     
+ |______\____/ \____/|_|     
+                           
+######################################>
+
+$users = Get-ADUser -Filter {department -eq $department} 
+
+foreach ($user in $users) {
+Add-ADGroupMember -Identity $group -Members $user
+}
