@@ -1,3 +1,5 @@
+#This script will create new AD Users based on the spreadsheet C:\Admin\userlist.xlsx
+
 <######################################
    _____ ______ _______ _    _ _____  
   / ____|  ____|__   __| |  | |  __ \ 
@@ -7,6 +9,9 @@
  |_____/|______|  |_|   \____/|_|   
 ######################################>
 
+#import the proper module, this does require that psexcel be installed
+import-module psexcel
+Import-Module ActiveDirectory
 
 #Set the path for the .xlsx we will import
 $path = "C:\Admin\userlist.xlsx"
@@ -14,10 +19,6 @@ $path = "C:\Admin\userlist.xlsx"
 #Generate a Log File - This part is a work in progress
 	#$log = "C:\Admin\WSUS\Approved_Updates_{0:MMddyyyy_HHmm}.log" -f (Get-Date)
 	#new-item -path $log -type file -force
-
-#import the proper module, this does require that psexcel be installed
-import-module psexcel
-Import-Module ActiveDirectory
 
 #Generate Array
 $users = new-object System.Collections.ArrayList
