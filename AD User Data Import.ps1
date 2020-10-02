@@ -104,6 +104,18 @@ if ($user.HomePhone -ne $null)
 if ($user.Country -ne $null)
 {Set-ADUser $user.Username -Country $user.Country}
 
+#JobTitle
+if ($user.Title -ne $null)
+{Set-ADUser $user.Username -Title $user.Title}
+
+#Country
+if ($user.Country -ne $null)
+{Set-ADUser $user.Username -Country $user.Country}
+
+#Initials
+if ($user.Initials -ne $null)
+{Set-ADUser $user.Username -Initials $user.Initials}
+
 #Description, comment this out, but its a useful way to know when the import was successfully completed.
 $descriptionstring = "Imported with Powershell:" + (Get-Date)
 Set-ADUser $user.Username -Description $descriptionstring
